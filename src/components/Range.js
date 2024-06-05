@@ -31,29 +31,34 @@ export default function Slider({ min, max }) {
   };
 
   return (
-    <View style={{ width: "100%" }}>
+    <View style={{ flex: 1, backgroundColor: "#CDE8E5" }}>
       <View style={styling.output}>
-        <Text>Min: {low}</Text>
-        <Text>Max: {high}</Text>
-        <Text>Output:</Text>
-        <Text>{randomOutput}</Text>
+        <View style={styling.minMax}>
+          <Text style={styling.minMaxText}>Min: {low}</Text>
+          <Text style={styling.minMaxText}>Max: {high}</Text>
+        </View>
+        <View style={styling.randomNumber}>
+          <Text style={styling.randomNumberText}>{randomOutput}</Text>
+        </View>
       </View>
-      <View style={{ backgroundColor: "aqua", width: "100%" }}>
-        <RangeSlider
-          style={styles.slider}
-          min={0}
-          max={100}
-          step={1}
-          renderThumb={renderThumb}
-          renderRail={renderRail}
-          renderRailSelected={renderRailSelected}
-          renderLabel={renderLabel}
-          renderNotch={renderNotch}
-          onValueChanged={handleValueChange}
-        />
-      </View>
-      <View>
-        <Button title="Generate" onPress={generateRandomNumber} />
+      <View style={styling.input}>
+        <View style={styling.slider}>
+          <RangeSlider
+            style={styles.slider}
+            min={0}
+            max={100}
+            step={1}
+            renderThumb={renderThumb}
+            renderRail={renderRail}
+            renderRailSelected={renderRailSelected}
+            renderLabel={renderLabel}
+            renderNotch={renderNotch}
+            onValueChanged={handleValueChange}
+          />
+        </View>
+        <View style={styling.button}>
+          <Button title="Generate" onPress={generateRandomNumber} />
+        </View>
       </View>
     </View>
   );
@@ -61,6 +66,36 @@ export default function Slider({ min, max }) {
 
 const styling = StyleSheet.create({
   output: {
-    backgroundColor: "Blue",
-  }
+    flex: 1,
+    backgroundColor: "#EEF7FF",
+  },
+  minMax: {
+    flex: 1,
+    backgroundColor: "#7AB2B2",
+    flexDirection: "row",
+    padding: 20,
+  },
+  minMaxText: {
+    flex: 1,
+    fontSize: 45,
+
+    textAlignVertical: "center",
+  },
+  randomNumber: {
+    flex: 3,
+  },
+  randomNumberText: {
+    fontSize: 150,
+    textAlign: "center",
+  },
+  input: {
+    flex: 1,
+    padding: 20,
+  },
+  slider: {
+    flex: 1,
+  },
+  button: {
+    flex: 1,
+  },
 });
